@@ -1,117 +1,168 @@
-# 🛠️ Skill Connect
+# Skill Connect
 
-Skill Connect is a full-stack web application designed to connect customers directly with skilled household service providers — such as electricians, plumbers, carpenters, cleaners, and more — **without intermediaries**.
+### Developed by **Rashi Gupta** (GitHub: [rxz33](https://github.com/rxz33))
 
-The platform aims to simplify access to trusted professionals while ensuring fair pricing and transparent communication between customers and service providers.
+Skill Connect is a full‑stack platform designed to connect customers directly with skilled household service providers such as electricians, plumbers, carpenters, cleaners, appliance technicians, and more.
+
+The goal of the platform is to give users **fast, reliable, location-based access** to trusted service providers while ensuring **fair pricing and transparent communication**.
 
 ---
 
 ## 🚀 Features
 
 ### 👥 User Roles
-- **Customer** – can browse services, view provider profiles, book services, and give reviews.  
-- **Service Provider** – can register their skills, set availability, accept bookings, and manage completed tasks.  
 
-### 💡 Core Functionalities
-- 🔐 User authentication (signup/login for customers & providers)  
-- 📋 Service listings with categories and filters  
-- 📅 Real-time booking and scheduling  
-- 💬 Direct chat or request system between users and providers  
-- ⭐ Ratings & feedback system  
-- 🧾 Booking history and invoice generation  
-- 📍 Location-based search for nearby services  
-- ⚙️ Admin dashboard (optional) for monitoring users and bookings  
+* **Customer** – Browse services, view provider profiles, book services, and submit reviews.
+* **Service Provider** – Register skills, set availability, accept bookings, and manage tasks.
+
+---
+
+## 💡 Core Functionalities
+
+* 🔐 **User Authentication** (Signup/Login for customers & providers)
+* 📋 **Service Listings** with categories & filters
+* 📅 **Real-time booking & scheduling**
+* 💬 **Direct chat/request system** between users & providers
+* ⭐ **Ratings & Reviews**
+* 🧾 **Booking history & invoice generation**
+* 📍 **Location-based search** for nearby providers
+* ⚙️ Optional **Admin Dashboard** for managing users & bookings
 
 ---
 
 ## 🏗️ Tech Stack
 
-| Layer | Technologies |
-|-------|---------------|
-| **Frontend** | React.js / HTML / CSS / JavaScript / Bootstrap / Tailwind |
-| **Backend** | Node.js / Express.js (or Django / Go depending on implementation) |
-| **Database** | MongoDB / MySQL / PostgreSQL |
-| **Authentication** | PassPort |
-| **Deployment** | Render / Vercel / AWS / Railway / Netlify |
-| **Version Control** | Git & GitHub |
+| Layer               | Technologies                                              |
+| ------------------- | --------------------------------------------------------- |
+| **Frontend**        | EJS Templates, HTML, CSS, JavaScript, Bootstrap, Tailwind |
+| **Backend**         | Node.js, Express.js                                       |
+| **Database**        | MongoDB (Mongoose ORM)                                    |
+| **Authentication**  | Passport.js (Local Strategy)                              |
+| **Deployment**      | Render                                                    |
+| **Version Control** | Git & GitHub                                              |
+
+---
+
+## 📁 Folder Structure
+
+```
+Skill-Connect/
+│
+├── app.js
+├── package.json
+├── controllers/
+├── models/
+├── routes/
+├── middleware.js
+├── cloudConfig.js
+├── uploads/
+├── public/
+│   ├── css/
+│   ├── js/
+│
+├── views/
+│   ├── layouts/
+│   ├── listings/
+│   ├── users/
+│   └── includes/
+└── utility/
+```
 
 ---
 
 ## ⚙️ Installation & Setup
 
+### 1. Clone the Repository
 
-# 1. Clone the repository
-git clone https://github.com/yourusername/skill-connect.git
+```
+git clone https://github.com/rxz33/Skill-Connect.git
+```
 
-# 2. Navigate to the project directory
-cd skill-connect
+### 2. Install Dependencies
 
-# 3. Install backend dependencies
-cd backend
+```
 npm install
+```
 
-# 4. Install frontend dependencies
-cd ../frontend
-npm install
+### 3. Create `.env` file
 
-# 5. Run backend server
+```
+MONGO_URI=your_mongodb_connection_string
+CLOUDINARY_CLOUD_NAME=xxx
+CLOUDINARY_API_KEY=xxx
+CLOUDINARY_API_SECRET=xxx
+SESSION_SECRET=your_secret_key
+```
+
+### 4. Start the Server
+
+```
 npm start
+```
 
-# 6. Run frontend app
-npm run dev
-The backend runs on port 4000, and the frontend on port 3000 (you can adjust in .env).
+Your app will run at:
 
-🗄️ Folder Structure
-pgsql
-Copy code
-Skill-Connect/
-│
-├── backend/
-│   ├── server.js
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── middlewares/
-│   └── config/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.js
-│   └── public/
-│
-└── README.md
-🧩 API Endpoints (Example)
-Method	Endpoint	Description
-POST	/api/auth/register	Register a new user or provider
-POST	/api/auth/login	Login to the platform
-GET	/api/services	Get all available services
-POST	/api/bookings	Create a new booking
-GET	/api/bookings/:id	Get booking details
-POST	/api/reviews	Submit a review for a provider
+```
+http://localhost:3000
+```
 
+---
 
-🤝 Contributing
-Contributions are welcome!
-If you'd like to improve Skill Connect, please fork the repo, create a branch, and submit a pull request.
+## 🌐 Deployment (Render)
 
-📄 License
-This project is licensed under the MIT License – feel free to use and modify it for your own learning or deployment.
+### Build Command:
 
-✨ Future Enhancements
-📱 Mobile App version using React Native or Flutter
+```
+npm install
+```
 
-💳 Integrated payment gateway (Razorpay / Stripe)
+### Start Command:
 
-🌐 Multilingual support
+```
+npm start
+```
 
-🧠 AI-based skill matching system
+### Root Directory:
 
-🔔 Push notifications for real-time updates
+*(Leave empty)*
 
-👨‍💻 Author
-Rakesh Mundel
-📧 rakeshmundel000@gmail.com
-🌐 www.linkedin.com/in/rakeshmundel000
+Add environment variables in Render dashboard under **Environment**.
+
+---
+
+## 🧩 API Endpoints (Examples)
+
+| Method | Endpoint             | Description                  |
+| ------ | -------------------- | ---------------------------- |
+| POST   | `/api/auth/register` | Register a new user/provider |
+| POST   | `/api/auth/login`    | Login to the platform        |
+| GET    | `/api/services`      | Fetch all services           |
+| POST   | `/api/bookings`      | Create a booking             |
+| GET    | `/api/bookings/:id`  | Get booking details          |
+| POST   | `/api/reviews`       | Submit a review              |
+
+---
+
+## 🤝 Contributing
+
+Contributions are always welcome! Feel free to fork the repo, make improvements, and create a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ✨ Future Enhancements
+
+* 📱 Mobile App Version (React Native / Flutter)
+* 💳 Integrated Payment Gateway (Razorpay / Stripe)
+* 🌐 Multi-language support
+* 🧠 AI-based skill/provider matching system
+* 🔔 Push notifications for real-time updates
+
+---
+
+### 🚀 Developed with ❤️ by **Rashi Gupta**

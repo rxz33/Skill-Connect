@@ -50,23 +50,22 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({ error: "Image file required" }); // SAFE GUARD
+    try {
+        console.log("REQ BODY:", req.body);
+        console.log("REQ FILE:", req.file);
+        console.log("USER:", req.user);
+
+        const newListing = new Listing(req.body.listing);
+        newListing.owner = req.user._id;
+        newListing.image = { url: req.file.path, filename: req.file.filename };
+        await newListing.save();
+
+        res.redirect("/listings");
+    } catch (err) {
+        console.error("❌ CREATE ERROR:", err);
+        return res.status(500).send(err.message);
     }
-
-    const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id;
-    newListing.image = {
-        url: req.file.path,
-        filename: req.file.filename
-    };
-
-    await newListing.save();
-
-    req.flash("success", "New Listing Created!");
-    res.redirect("/listings");
 };
-
 
 module.exports.renderEditForm = async (req, res) => {
     let { id } = req.params;

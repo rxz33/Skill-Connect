@@ -15,8 +15,19 @@ const listingSchema=new Schema({
   category: {
   type: String,
   required: true,
-  enum: ['Trending','Beaches', 'Rooms','Iconic Cities','Castles','Amazing Pools','Camping','Farms','Arctic','Mountains', 'Desert']
+  enum: [
+    "Women's Salon & Spa",
+    "Men's Salon & Spa",
+    "AC & Appliances Repair",
+    "Plumber",
+    "Carpenter",
+    "Cleaning & Pest Control",
+    "Electrician",
+    "Water Purifier",
+    "Painting & Water Proofing"
+  ]
 }
+
 ,
     price:Number,
     location:String,

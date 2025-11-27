@@ -50,22 +50,12 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
-    try {
-        console.log("REQ BODY:", req.body);
-        console.log("REQ FILE:", req.file);
-        console.log("USER:", req.user);
-
-        const newListing = new Listing(req.body.listing);
-        newListing.owner = req.user._id;
-        newListing.image = { url: req.file.path, filename: req.file.filename };
-        await newListing.save();
-
-        res.redirect("/listings");
-    } catch (err) {
-        console.error("❌ CREATE ERROR:", err);
-        return res.status(500).send(err.message);
-    }
+    console.log("BODY →", req.body);
+    console.log("FILE →", req.file);
+    console.log("USER →", req.user);
+    res.send("received");
 };
+
 
 module.exports.renderEditForm = async (req, res) => {
     let { id } = req.params;

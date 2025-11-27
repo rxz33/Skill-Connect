@@ -66,3 +66,53 @@ module.exports.createListing = async (req, res) => {
         res.send("Error creating listing");
     }
 };
+
+// =========================
+// EDIT LISTING FORM
+// =========================
+module.exports.renderEditForm = async (req, res) => {
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+
+    if (!listing) {
+        req.flash("error", "Listing not found");
+        return res.redirect("/listings");
+    }
+
+    res.render("listings/edit.ejs", { listing });
+};
+
+// =========================
+// UPDATE LISTING
+// =========================
+module.exports.updateListing = async (req, res) => {
+    const { id } = req.params;
+    const listing = await Listing.findById(id);
+
+    listing.title = req.body.listing.title;
+    listing.description = req.body.listing.description;
+    listing.price = req.body.listing.price;
+    listing.category = req.body.listing.category;
+    listing.location = req.body.listing.location;
+    listing.country = req.body.listing.country;
+
+    if (req.file) {
+        listing.image = { url: req.file.path, filename: req.file.filename };
+    }
+
+    await listing.save();
+    req.flash("success", "Listing updated successfully!");
+    res.redirect(`/listings/${id}`);
+};
+
+// =========================
+// DELETE LISTING
+// =========================
+module.exports.destroyListing = async (req, res) => {
+    const { id } = req.params;
+    await Listing.findByIdAndDelete(id);
+
+    req.flash("success", "Listing deleted");
+    res.redirect("/listings");
+};
+
